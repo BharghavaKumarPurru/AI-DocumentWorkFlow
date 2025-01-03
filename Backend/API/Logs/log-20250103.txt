@@ -1,0 +1,746 @@
+2025-01-03 14:02:57.352 -05:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-03 14:02:57.485 -05:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-01-03 14:02:57.543 -05:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-01-03 14:02:57.722 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-01-03 14:02:57.749 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-03 14:02:57.759 -05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-03 14:02:57.771 -05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-01-03 14:02:57.799 -05:00 [INF] No migrations were applied. The database is already up to date.
+2025-01-03 14:02:57.816 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-01-03 14:02:58.348 -05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-01-03 14:02:58.719 -05:00 [INF] User profile is available. Using 'C:\Users\Bharghava\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-03 14:02:59.281 -05:00 [INF] Now listening on: http://localhost:5094
+2025-01-03 14:02:59.568 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-03 14:02:59.578 -05:00 [INF] Hosting environment: Development
+2025-01-03 14:02:59.580 -05:00 [INF] Content root path: C:\Users\Bharghava\OneDrive\Documents\AI Doc\AI-DocumentWorkflow\Backend\API
+2025-01-03 14:03:01.606 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/swagger/index.html - null null
+2025-01-03 14:03:02.264 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/swagger/index.html - 200 null text/html;charset=utf-8 675.3199ms
+2025-01-03 14:03:02.476 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/_framework/aspnetcore-browser-refresh.js - null null
+2025-01-03 14:03:02.524 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/_framework/aspnetcore-browser-refresh.js - 200 13742 application/javascript; charset=utf-8 48.6998ms
+2025-01-03 14:03:02.669 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/_vs/browserLink - null null
+2025-01-03 14:03:02.903 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/_vs/browserLink - 200 null text/javascript; charset=UTF-8 234.4383ms
+2025-01-03 14:03:07.160 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/swagger/v1/swagger.json - null null
+2025-01-03 14:03:07.194 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 33.5782ms
+2025-01-03 14:03:27.907 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/login - null null
+2025-01-03 14:03:28.001 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:03:28.011 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/login - 204 null null 103.9029ms
+2025-01-03 14:03:28.028 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5094/api/login - application/json 61
+2025-01-03 14:03:28.040 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:03:28.044 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-03 14:03:28.287 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.LoginController.Login (API)'
+2025-01-03 14:03:28.357 -05:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AI_DocumentWorkflow.Models.LoginRequest) on controller AI_DocumentWorkflow.Controllers.LoginController (API).
+2025-01-03 14:03:28.802 -05:00 [INF] Executed DbCommand (60ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE LOWER([u].[Username]) = @__ToLower_0
+2025-01-03 14:03:28.999 -05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:03:29.035 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.LoginController.Login (API) in 664.5571ms
+2025-01-03 14:03:29.038 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.LoginController.Login (API)'
+2025-01-03 14:03:29.092 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5094/api/login - 200 null application/json; charset=utf-8 1064.3271ms
+2025-01-03 14:03:29.133 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:03:29.147 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:03:29.137 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:03:29.149 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - 204 null null 16.0352ms
+2025-01-03 14:03:29.160 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:03:29.168 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:03:29.170 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - 204 null null 33.0987ms
+2025-01-03 14:03:29.175 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:03:29.303 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:03:29.323 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:03:29.619 -05:00 [INF] Executed DbCommand (119ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+2025-01-03 14:03:29.707 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:03:29.735 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 407.8962ms
+2025-01-03 14:03:29.735 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:03:29.739 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:03:29.743 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:03:29.750 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - 200 null application/json; charset=utf-8 581.9965ms
+2025-01-03 14:03:29.756 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:03:29.762 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:03:29.905 -05:00 [INF] Executed DbCommand (133ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+2025-01-03 14:03:29.949 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:03:29.955 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 187.0517ms
+2025-01-03 14:03:29.960 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:03:29.979 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - 200 null application/json; charset=utf-8 243.8855ms
+2025-01-03 14:15:51.452 -05:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-03 14:15:51.495 -05:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-01-03 14:15:51.509 -05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-01-03 14:15:51.575 -05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-01-03 14:15:51.586 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-03 14:15:51.592 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-03 14:15:51.599 -05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-01-03 14:15:51.609 -05:00 [INF] No migrations were applied. The database is already up to date.
+2025-01-03 14:15:51.619 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-01-03 14:15:51.780 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-01-03 14:15:51.901 -05:00 [INF] User profile is available. Using 'C:\Users\Bharghava\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-03 14:15:52.051 -05:00 [INF] Now listening on: http://localhost:5094
+2025-01-03 14:15:52.129 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-03 14:15:52.133 -05:00 [INF] Hosting environment: Development
+2025-01-03 14:15:52.136 -05:00 [INF] Content root path: C:\Users\Bharghava\OneDrive\Documents\AI Doc\AI-DocumentWorkflow\Backend\API
+2025-01-03 14:15:52.800 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/swagger/index.html - null null
+2025-01-03 14:15:52.988 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/swagger/index.html - 200 null text/html;charset=utf-8 195.2902ms
+2025-01-03 14:15:53.049 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/_framework/aspnetcore-browser-refresh.js - null null
+2025-01-03 14:15:53.050 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/_vs/browserLink - null null
+2025-01-03 14:15:53.057 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/_framework/aspnetcore-browser-refresh.js - 200 13742 application/javascript; charset=utf-8 7.6371ms
+2025-01-03 14:15:53.114 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/_vs/browserLink - 200 null text/javascript; charset=UTF-8 64.0923ms
+2025-01-03 14:15:54.115 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/swagger/v1/swagger.json - null null
+2025-01-03 14:15:54.128 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.2419ms
+2025-01-03 14:16:11.940 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/login - null null
+2025-01-03 14:16:11.964 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:11.969 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/login - 204 null null 29.0183ms
+2025-01-03 14:16:11.976 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5094/api/login - application/json 61
+2025-01-03 14:16:11.983 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:11.985 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-03 14:16:12.068 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.LoginController.Login (API)'
+2025-01-03 14:16:12.099 -05:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AI_DocumentWorkflow.Models.LoginRequest) on controller AI_DocumentWorkflow.Controllers.LoginController (API).
+2025-01-03 14:16:12.345 -05:00 [INF] Executed DbCommand (29ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE LOWER([u].[Username]) = @__ToLower_0
+2025-01-03 14:16:12.484 -05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:16:12.497 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.LoginController.Login (API) in 391.0139ms
+2025-01-03 14:16:12.499 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.LoginController.Login (API)'
+2025-01-03 14:16:12.511 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5094/api/login - 200 null application/json; charset=utf-8 535.4599ms
+2025-01-03 14:16:12.530 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:16:12.545 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:16:12.549 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:12.554 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:12.554 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - 204 null null 24.0012ms
+2025-01-03 14:16:12.555 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - 204 null null 9.7989ms
+2025-01-03 14:16:12.570 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:16:12.576 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:12.662 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:16:12.684 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:16:12.807 -05:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+2025-01-03 14:16:12.859 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:16:12.872 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 183.232ms
+2025-01-03 14:16:12.875 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:16:12.875 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:16:12.879 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:12.882 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - 200 null application/json; charset=utf-8 312.4526ms
+2025-01-03 14:16:12.891 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:16:12.893 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:16:12.935 -05:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+2025-01-03 14:16:12.954 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:16:12.963 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 64.7843ms
+2025-01-03 14:16:12.966 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:16:12.968 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - 200 null application/json; charset=utf-8 93.0422ms
+2025-01-03 14:16:27.772 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=Admin - null null
+2025-01-03 14:16:27.772 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=Admin - null null
+2025-01-03 14:16:27.782 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:27.786 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:27.788 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=Admin - 204 null null 16.2331ms
+2025-01-03 14:16:27.789 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=Admin - 204 null null 17.4471ms
+2025-01-03 14:16:27.799 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=Admin - null null
+2025-01-03 14:16:27.803 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:27.806 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:16:27.812 -05:00 [INF] Route matched with {action = "GetPendingDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingDocuments(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:16:27.836 -05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Pending'
+2025-01-03 14:16:27.840 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:16:27.842 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API) in 27.4472ms
+2025-01-03 14:16:27.843 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=Admin - null null
+2025-01-03 14:16:27.845 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:16:27.849 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:27.851 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=Admin - 200 null application/json; charset=utf-8 51.692ms
+2025-01-03 14:16:27.852 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:16:27.857 -05:00 [INF] Route matched with {action = "GetPendingDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingDocuments(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:16:27.867 -05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Pending'
+2025-01-03 14:16:27.871 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:16:27.874 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API) in 14.6213ms
+2025-01-03 14:16:27.876 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:16:27.878 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=Admin - 200 null application/json; charset=utf-8 34.5222ms
+2025-01-03 14:16:35.116 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/rejected - null null
+2025-01-03 14:16:35.161 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:35.117 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/rejected - null null
+2025-01-03 14:16:35.165 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/rejected - 204 null null 48.8126ms
+2025-01-03 14:16:35.175 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:35.190 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/rejected - null null
+2025-01-03 14:16:35.192 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/rejected - 204 null null 75.1949ms
+2025-01-03 14:16:35.196 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:35.204 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetRejectedDocuments (API)'
+2025-01-03 14:16:35.209 -05:00 [INF] Route matched with {action = "GetRejectedDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRejectedDocuments() on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:16:35.224 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Rejected'
+2025-01-03 14:16:35.227 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:16:35.231 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetRejectedDocuments (API) in 20.1156ms
+2025-01-03 14:16:35.233 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/rejected - null null
+2025-01-03 14:16:35.234 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetRejectedDocuments (API)'
+2025-01-03 14:16:35.238 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:35.239 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/rejected - 200 null application/json; charset=utf-8 48.6203ms
+2025-01-03 14:16:35.240 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetRejectedDocuments (API)'
+2025-01-03 14:16:35.244 -05:00 [INF] Route matched with {action = "GetRejectedDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRejectedDocuments() on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:16:35.251 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Rejected'
+2025-01-03 14:16:35.254 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:16:35.256 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetRejectedDocuments (API) in 8.865ms
+2025-01-03 14:16:35.258 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetRejectedDocuments (API)'
+2025-01-03 14:16:35.259 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/rejected - 200 null application/json; charset=utf-8 26.5291ms
+2025-01-03 14:16:51.510 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:16:51.516 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:16:51.530 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:51.532 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:51.535 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - 204 null null 19.2262ms
+2025-01-03 14:16:51.534 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - 204 null null 24.3431ms
+2025-01-03 14:16:51.551 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:16:51.555 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:51.557 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:16:51.561 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:16:51.587 -05:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+2025-01-03 14:16:51.591 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:16:51.596 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 27.5219ms
+2025-01-03 14:16:51.597 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:16:51.602 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:16:51.598 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:16:51.604 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:16:51.606 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - 200 null application/json; charset=utf-8 54.7975ms
+2025-01-03 14:16:51.607 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:16:51.618 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+2025-01-03 14:16:51.623 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:16:51.625 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 9.6859ms
+2025-01-03 14:16:51.626 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:16:51.627 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - 200 null application/json; charset=utf-8 30.1786ms
+2025-01-03 14:17:14.947 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/upload - null null
+2025-01-03 14:17:14.952 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:17:14.956 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/upload - 204 null null 21.8804ms
+2025-01-03 14:17:14.971 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5094/api/documents/upload - multipart/form-data; boundary=----WebKitFormBoundaryhyODDnBw7IDKTRAz 105607
+2025-01-03 14:17:14.976 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:17:14.978 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.UploadDocument (API)'
+2025-01-03 14:17:14.987 -05:00 [INF] Route matched with {action = "UploadDocument", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadDocument(Microsoft.AspNetCore.Http.IFormFile) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:17:39.483 -05:00 [INF] Executed DbCommand (192ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Documents] ([Category], [Content], [CreatedAt], [Feedback], [Name], [Status])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-01-03 14:17:39.516 -05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-03 14:17:39.803 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.UploadDocument (API) in 24811.8835ms
+2025-01-03 14:17:39.981 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.UploadDocument (API)'
+2025-01-03 14:17:39.988 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5094/api/documents/upload - 200 null application/json; charset=utf-8 25017.3805ms
+2025-01-03 14:17:48.858 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=Admin - null null
+2025-01-03 14:17:48.860 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=Admin - null null
+2025-01-03 14:17:48.871 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:17:48.880 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:17:48.880 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=Admin - 204 null null 21.7971ms
+2025-01-03 14:17:48.951 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=Admin - null null
+2025-01-03 14:17:48.897 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=Admin - 204 null null 37.3481ms
+2025-01-03 14:17:48.954 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:17:48.967 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:17:48.969 -05:00 [INF] Route matched with {action = "GetPendingDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingDocuments(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:17:48.977 -05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Pending'
+2025-01-03 14:17:48.981 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:17:48.982 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API) in 11.5301ms
+2025-01-03 14:17:48.984 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=Admin - null null
+2025-01-03 14:17:48.985 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:17:48.991 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:17:48.993 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=Admin - 200 null application/json; charset=utf-8 42.4323ms
+2025-01-03 14:17:48.995 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:17:49.001 -05:00 [INF] Route matched with {action = "GetPendingDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingDocuments(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:17:49.008 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Pending'
+2025-01-03 14:17:49.012 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:17:49.015 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API) in 11.2271ms
+2025-01-03 14:17:49.017 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:17:49.020 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=Admin - 200 null application/json; charset=utf-8 35.5892ms
+2025-01-03 14:17:51.233 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:17:51.233 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:17:51.412 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:17:51.415 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:17:51.416 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - 204 null null 183.5209ms
+2025-01-03 14:17:51.417 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - 204 null null 184.0706ms
+2025-01-03 14:17:51.423 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:17:51.426 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:17:51.427 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:17:51.428 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:17:51.437 -05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+2025-01-03 14:17:51.442 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:17:51.444 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 14.5384ms
+2025-01-03 14:17:51.446 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:17:51.449 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:17:51.454 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:17:51.458 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - 200 null application/json; charset=utf-8 35.1269ms
+2025-01-03 14:17:51.459 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:17:51.469 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:17:51.477 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+2025-01-03 14:17:51.486 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:17:51.491 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 17.9098ms
+2025-01-03 14:17:51.493 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:17:51.494 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - 200 null application/json; charset=utf-8 48.5668ms
+2025-01-03 14:18:12.787 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/login - null null
+2025-01-03 14:18:12.798 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:12.799 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/login - 204 null null 12.3794ms
+2025-01-03 14:18:12.813 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5094/api/login - application/json 63
+2025-01-03 14:18:12.818 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:12.819 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.LoginController.Login (API)'
+2025-01-03 14:18:12.822 -05:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AI_DocumentWorkflow.Models.LoginRequest) on controller AI_DocumentWorkflow.Controllers.LoginController (API).
+2025-01-03 14:18:12.835 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE LOWER([u].[Username]) = @__ToLower_0
+2025-01-03 14:18:12.838 -05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:18:12.843 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.LoginController.Login (API) in 14.2538ms
+2025-01-03 14:18:12.846 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.LoginController.Login (API)'
+2025-01-03 14:18:12.851 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5094/api/login - 200 null application/json; charset=utf-8 38.0508ms
+2025-01-03 14:18:12.868 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:18:12.870 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:18:12.877 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:12.884 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:12.885 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - 204 null null 17.0819ms
+2025-01-03 14:18:12.885 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - 204 null null 15.3394ms
+2025-01-03 14:18:12.897 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:18:12.900 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:12.902 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:18:12.904 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:18:12.916 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE LOWER([d].[Category]) = @__ToLower_0
+2025-01-03 14:18:12.919 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:18:12.921 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 14.7255ms
+2025-01-03 14:18:12.922 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:18:12.922 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:18:12.926 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:12.927 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - 200 null application/json; charset=utf-8 29.5485ms
+2025-01-03 14:18:12.928 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:18:12.933 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:18:12.940 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE LOWER([d].[Category]) = @__ToLower_0
+2025-01-03 14:18:12.945 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:18:12.948 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 12.8016ms
+2025-01-03 14:18:12.950 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:18:12.951 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - 200 null application/json; charset=utf-8 28.9445ms
+2025-01-03 14:18:18.968 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=HR - null null
+2025-01-03 14:18:18.968 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=HR - null null
+2025-01-03 14:18:18.981 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:18.984 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:18.985 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=HR - 204 null null 16.822ms
+2025-01-03 14:18:18.985 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=HR - 204 null null 17.3828ms
+2025-01-03 14:18:18.992 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=HR - null null
+2025-01-03 14:18:18.998 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:18.999 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:18:19.002 -05:00 [INF] Route matched with {action = "GetPendingDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingDocuments(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:18:19.016 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__role_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Pending' AND [d].[Category] = @__role_0
+2025-01-03 14:18:19.020 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:18:19.024 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API) in 18.5909ms
+2025-01-03 14:18:19.025 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=HR - null null
+2025-01-03 14:18:19.026 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:18:19.033 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:19.033 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=HR - 200 null application/json; charset=utf-8 41.113ms
+2025-01-03 14:18:19.037 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:18:19.044 -05:00 [INF] Route matched with {action = "GetPendingDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingDocuments(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:18:19.049 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__role_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Pending' AND [d].[Category] = @__role_0
+2025-01-03 14:18:19.054 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:18:19.056 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API) in 9.4012ms
+2025-01-03 14:18:19.058 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:18:19.059 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=HR - 200 null application/json; charset=utf-8 34.4619ms
+2025-01-03 14:18:36.420 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/58/reject - null null
+2025-01-03 14:18:36.456 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:36.460 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/58/reject - 204 null null 39.6287ms
+2025-01-03 14:18:36.470 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5094/api/documents/58/reject - application/json 39
+2025-01-03 14:18:36.474 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:36.476 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.RejectDocumentWithFeedback (API)'
+2025-01-03 14:18:36.483 -05:00 [INF] Route matched with {action = "RejectDocumentWithFeedback", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RejectDocumentWithFeedback(Int32, DocumentFeedbackRequest) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:18:36.526 -05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Id] = @__p_0
+2025-01-03 14:18:36.543 -05:00 [INF] Executed DbCommand (8ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Documents] SET [Feedback] = @p0, [Status] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2025-01-03 14:18:36.548 -05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-03 14:18:36.551 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.RejectDocumentWithFeedback (API) in 65.727ms
+2025-01-03 14:18:36.552 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.RejectDocumentWithFeedback (API)'
+2025-01-03 14:18:36.554 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5094/api/documents/58/reject - 200 null application/json; charset=utf-8 83.9963ms
+2025-01-03 14:18:42.572 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/14/status - null null
+2025-01-03 14:18:42.682 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:42.695 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/14/status - 204 null null 123.1466ms
+2025-01-03 14:18:42.799 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5094/api/documents/14/status - application/json 21
+2025-01-03 14:18:42.800 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:42.808 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.UpdateDocumentStatus (API)'
+2025-01-03 14:18:43.033 -05:00 [INF] Route matched with {action = "UpdateDocumentStatus", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateDocumentStatus(Int32, DocumentStatusUpdateRequest) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:18:43.046 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Id] = @__p_0
+2025-01-03 14:18:43.051 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Documents] SET [Status] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2025-01-03 14:18:43.053 -05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-03 14:18:43.054 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.UpdateDocumentStatus (API) in 15.247ms
+2025-01-03 14:18:43.095 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.UpdateDocumentStatus (API)'
+2025-01-03 14:18:43.096 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5094/api/documents/14/status - 200 null application/json; charset=utf-8 297.2975ms
+2025-01-03 14:18:45.381 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:18:45.381 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:18:45.398 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:45.401 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:45.402 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - 204 null null 21.0329ms
+2025-01-03 14:18:45.402 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - 204 null null 21.7141ms
+2025-01-03 14:18:45.413 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:18:45.419 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:45.420 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:18:45.421 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:18:45.429 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE LOWER([d].[Category]) = @__ToLower_0
+2025-01-03 14:18:45.438 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:18:45.442 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 17.5108ms
+2025-01-03 14:18:45.447 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:18:45.458 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:18:45.459 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - 200 null application/json; charset=utf-8 46.5379ms
+2025-01-03 14:18:45.463 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:18:45.483 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:18:45.484 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:18:45.490 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE LOWER([d].[Category]) = @__ToLower_0
+2025-01-03 14:18:45.495 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:18:45.498 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 11.6515ms
+2025-01-03 14:18:45.500 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:18:45.504 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - 200 null application/json; charset=utf-8 45.4035ms
+2025-01-03 14:19:18.222 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/login - null null
+2025-01-03 14:19:18.229 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:18.230 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/login - 204 null null 8.0303ms
+2025-01-03 14:19:18.236 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5094/api/login - application/json 61
+2025-01-03 14:19:18.239 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:18.240 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.LoginController.Login (API)'
+2025-01-03 14:19:18.242 -05:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AI_DocumentWorkflow.Models.LoginRequest) on controller AI_DocumentWorkflow.Controllers.LoginController (API).
+2025-01-03 14:19:18.250 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE LOWER([u].[Username]) = @__ToLower_0
+2025-01-03 14:19:18.252 -05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:19:18.255 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.LoginController.Login (API) in 10.1028ms
+2025-01-03 14:19:18.256 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.LoginController.Login (API)'
+2025-01-03 14:19:18.258 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5094/api/login - 200 null application/json; charset=utf-8 21.8167ms
+2025-01-03 14:19:18.286 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:19:18.300 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:19:18.304 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:18.308 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:18.311 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - 204 null null 24.187ms
+2025-01-03 14:19:18.312 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=Admin - 204 null null 12.753ms
+2025-01-03 14:19:18.321 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:19:18.327 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:18.329 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:19:18.330 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:19:18.337 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+2025-01-03 14:19:18.340 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:19:18.344 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 9.6094ms
+2025-01-03 14:19:18.346 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:19:18.345 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - null null
+2025-01-03 14:19:18.347 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - 200 null application/json; charset=utf-8 26.2159ms
+2025-01-03 14:19:18.351 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:18.356 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:19:18.357 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:19:18.369 -05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+2025-01-03 14:19:18.374 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:19:18.381 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 20.9291ms
+2025-01-03 14:19:18.384 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:19:18.386 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=Admin - 200 null application/json; charset=utf-8 41.3473ms
+2025-01-03 14:19:20.604 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/rejected - null null
+2025-01-03 14:19:20.634 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:20.608 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/rejected - null null
+2025-01-03 14:19:20.635 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/rejected - 204 null null 31.7503ms
+2025-01-03 14:19:20.638 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:20.641 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/rejected - null null
+2025-01-03 14:19:20.642 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/rejected - 204 null null 34.3234ms
+2025-01-03 14:19:20.647 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:20.651 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetRejectedDocuments (API)'
+2025-01-03 14:19:20.652 -05:00 [INF] Route matched with {action = "GetRejectedDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRejectedDocuments() on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:19:20.657 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Rejected'
+2025-01-03 14:19:20.660 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:19:20.662 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetRejectedDocuments (API) in 8.5395ms
+2025-01-03 14:19:20.664 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/rejected - null null
+2025-01-03 14:19:20.665 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetRejectedDocuments (API)'
+2025-01-03 14:19:20.668 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:20.670 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/rejected - 200 null application/json; charset=utf-8 28.4899ms
+2025-01-03 14:19:20.671 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetRejectedDocuments (API)'
+2025-01-03 14:19:20.675 -05:00 [INF] Route matched with {action = "GetRejectedDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRejectedDocuments() on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:19:20.681 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Rejected'
+2025-01-03 14:19:20.684 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:19:20.686 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetRejectedDocuments (API) in 8.6723ms
+2025-01-03 14:19:20.688 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetRejectedDocuments (API)'
+2025-01-03 14:19:20.689 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/rejected - 200 null application/json; charset=utf-8 25.6906ms
+2025-01-03 14:19:36.018 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/58/reassign - null null
+2025-01-03 14:19:36.115 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:36.118 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/58/reassign - 204 null null 100.2044ms
+2025-01-03 14:19:36.126 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5094/api/documents/58/reassign - application/json 20
+2025-01-03 14:19:36.129 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:36.131 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.ReassignDocumentCategory (API)'
+2025-01-03 14:19:36.137 -05:00 [INF] Route matched with {action = "ReassignDocumentCategory", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ReassignDocumentCategory(Int32, ReassignCategoryRequest) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:19:36.186 -05:00 [INF] Executed DbCommand (43ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Id] = @__p_0
+2025-01-03 14:19:36.234 -05:00 [INF] Executed DbCommand (8ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Documents] SET [Status] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2025-01-03 14:19:36.239 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2025-01-03 14:19:36.240 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.ReassignDocumentCategory (API) in 101.5607ms
+2025-01-03 14:19:36.241 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.ReassignDocumentCategory (API)'
+2025-01-03 14:19:36.242 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5094/api/documents/58/reassign - 204 null null 115.8985ms
+2025-01-03 14:19:39.434 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=Admin - null null
+2025-01-03 14:19:39.434 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=Admin - null null
+2025-01-03 14:19:39.448 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:39.463 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:39.464 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=Admin - 204 null null 30.0579ms
+2025-01-03 14:19:39.465 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=Admin - 204 null null 31.0867ms
+2025-01-03 14:19:39.467 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=Admin - null null
+2025-01-03 14:19:39.490 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:39.518 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:19:39.519 -05:00 [INF] Route matched with {action = "GetPendingDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingDocuments(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:19:39.554 -05:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Pending'
+2025-01-03 14:19:39.558 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:19:39.563 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API) in 42.5087ms
+2025-01-03 14:19:39.565 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=Admin - null null
+2025-01-03 14:19:39.568 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:19:39.570 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:39.575 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=Admin - 200 null application/json; charset=utf-8 107.118ms
+2025-01-03 14:19:39.576 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:19:39.584 -05:00 [INF] Route matched with {action = "GetPendingDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingDocuments(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:19:39.588 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Pending'
+2025-01-03 14:19:39.592 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:19:39.594 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API) in 8.1273ms
+2025-01-03 14:19:39.596 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:19:39.598 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=Admin - 200 null application/json; charset=utf-8 32.8772ms
+2025-01-03 14:19:56.007 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/login - null null
+2025-01-03 14:19:56.010 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:56.011 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/login - 204 null null 4.0839ms
+2025-01-03 14:19:56.015 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5094/api/login - application/json 63
+2025-01-03 14:19:56.024 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:56.025 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.LoginController.Login (API)'
+2025-01-03 14:19:56.027 -05:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AI_DocumentWorkflow.Models.LoginRequest) on controller AI_DocumentWorkflow.Controllers.LoginController (API).
+2025-01-03 14:19:56.035 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE LOWER([u].[Username]) = @__ToLower_0
+2025-01-03 14:19:56.039 -05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:19:56.041 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.LoginController.Login (API) in 10.1769ms
+2025-01-03 14:19:56.045 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.LoginController.Login (API)'
+2025-01-03 14:19:56.046 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5094/api/login - 200 null application/json; charset=utf-8 30.7617ms
+2025-01-03 14:19:56.069 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:19:56.074 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:56.075 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - 204 null null 6.2287ms
+2025-01-03 14:19:56.070 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:19:56.080 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:19:56.085 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:56.089 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:56.090 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - 204 null null 20.8526ms
+2025-01-03 14:19:56.092 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:19:56.099 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:19:56.104 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE LOWER([d].[Category]) = @__ToLower_0
+2025-01-03 14:19:56.108 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:19:56.109 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 8.6641ms
+2025-01-03 14:19:56.111 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:19:56.112 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:19:56.115 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:56.116 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - 200 null application/json; charset=utf-8 35.5711ms
+2025-01-03 14:19:56.117 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:19:56.120 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:19:56.127 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE LOWER([d].[Category]) = @__ToLower_0
+2025-01-03 14:19:56.131 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:19:56.132 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 9.2296ms
+2025-01-03 14:19:56.134 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:19:56.135 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - 200 null application/json; charset=utf-8 24.3005ms
+2025-01-03 14:19:57.849 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=HR - null null
+2025-01-03 14:19:57.849 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=HR - null null
+2025-01-03 14:19:57.855 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:57.856 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=HR - 204 null null 7.2934ms
+2025-01-03 14:19:57.852 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:57.860 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/pending?role=HR - 204 null null 11.0941ms
+2025-01-03 14:19:57.862 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=HR - null null
+2025-01-03 14:19:57.869 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:57.870 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:19:57.872 -05:00 [INF] Route matched with {action = "GetPendingDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingDocuments(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:19:57.879 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__role_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Pending' AND [d].[Category] = @__role_0
+2025-01-03 14:19:57.882 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:19:57.884 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API) in 9.3241ms
+2025-01-03 14:19:57.885 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=HR - null null
+2025-01-03 14:19:57.886 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:19:57.890 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:19:57.892 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=HR - 200 null application/json; charset=utf-8 29.9595ms
+2025-01-03 14:19:57.893 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:19:57.897 -05:00 [INF] Route matched with {action = "GetPendingDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPendingDocuments(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:19:57.903 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Status] = N'Pending' AND [d].[Category] = @__role_0
+2025-01-03 14:19:57.907 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:19:57.909 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API) in 9.8793ms
+2025-01-03 14:19:57.911 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetPendingDocuments (API)'
+2025-01-03 14:19:57.913 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/pending?role=HR - 200 null application/json; charset=utf-8 27.8633ms
+2025-01-03 14:20:00.314 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/58/status - null null
+2025-01-03 14:20:00.318 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:20:00.318 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/58/status - 204 null null 4.3945ms
+2025-01-03 14:20:00.323 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5094/api/documents/58/status - application/json 21
+2025-01-03 14:20:00.325 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:20:00.327 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.UpdateDocumentStatus (API)'
+2025-01-03 14:20:00.328 -05:00 [INF] Route matched with {action = "UpdateDocumentStatus", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateDocumentStatus(Int32, DocumentStatusUpdateRequest) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:20:00.486 -05:00 [INF] Executed DbCommand (156ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE [d].[Id] = @__p_0
+2025-01-03 14:20:00.599 -05:00 [INF] Executed DbCommand (9ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Documents] SET [Status] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2025-01-03 14:20:00.602 -05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-03 14:20:00.607 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.UpdateDocumentStatus (API) in 278.0321ms
+2025-01-03 14:20:00.613 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.UpdateDocumentStatus (API)'
+2025-01-03 14:20:00.616 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5094/api/documents/58/status - 200 null application/json; charset=utf-8 292.6085ms
+2025-01-03 14:20:02.451 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:20:02.462 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:20:02.501 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - 204 null null 50.6783ms
+2025-01-03 14:20:02.507 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:20:02.514 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:20:02.521 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:20:02.526 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:20:02.611 -05:00 [INF] Executed DbCommand (83ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE LOWER([d].[Category]) = @__ToLower_0
+2025-01-03 14:20:02.618 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:20:02.624 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 95.8007ms
+2025-01-03 14:20:02.626 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:20:02.627 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - 200 null application/json; charset=utf-8 119.9844ms
+2025-01-03 14:20:02.629 -05:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:20:02.639 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:20:02.640 -05:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5094/api/documents/getdocuments?role=HR - 204 null null 190.8751ms
+2025-01-03 14:20:02.647 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - null null
+2025-01-03 14:20:02.652 -05:00 [INF] CORS policy execution successful.
+2025-01-03 14:20:02.655 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:20:02.656 -05:00 [INF] Route matched with {action = "GetDocumentsByRole", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocumentsByRole(System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2025-01-03 14:20:02.685 -05:00 [INF] Executed DbCommand (22ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Feedback], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+WHERE LOWER([d].[Category]) = @__ToLower_0
+2025-01-03 14:20:02.693 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-03 14:20:02.697 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API) in 36.2574ms
+2025-01-03 14:20:02.699 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocumentsByRole (API)'
+2025-01-03 14:20:02.701 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents/getdocuments?role=HR - 200 null application/json; charset=utf-8 53.2943ms

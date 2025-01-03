@@ -1,0 +1,71 @@
+2024-12-29 17:58:30.911 -05:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-12-29 17:58:30.951 -05:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2024-12-29 17:58:30.965 -05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2024-12-29 17:58:31.013 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2024-12-29 17:58:31.028 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-12-29 17:58:31.031 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-12-29 17:58:31.035 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-12-29 17:58:31.045 -05:00 [INF] No migrations were applied. The database is already up to date.
+2024-12-29 17:58:31.050 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2024-12-29 17:58:31.196 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-12-29 17:58:31.266 -05:00 [INF] User profile is available. Using 'C:\Users\Bharghava\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-29 17:58:31.361 -05:00 [INF] Now listening on: http://localhost:5094
+2024-12-29 17:58:31.364 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-29 17:58:31.366 -05:00 [INF] Hosting environment: Development
+2024-12-29 17:58:31.367 -05:00 [INF] Content root path: C:\Users\Bharghava\OneDrive\Documents\AI Doc\AI-DocumentWorkflow\Backend\API
+2024-12-29 17:58:34.077 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents - null null
+2024-12-29 17:58:34.104 -05:00 [WRN] Failed to determine the https port for redirect.
+2024-12-29 17:58:34.155 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocuments (API)'
+2024-12-29 17:58:34.178 -05:00 [INF] Route matched with {action = "GetDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocuments(Int32, Int32, System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2024-12-29 17:58:34.216 -05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-29 17:58:34.218 -05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-29 17:58:34.282 -05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-12-29 17:58:34.329 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-12-29 17:58:34.350 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocuments (API) in 167.2591ms
+2024-12-29 17:58:34.352 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocuments (API)'
+2024-12-29 17:58:34.358 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents - 200 null application/json; charset=utf-8 281.5549ms
+2024-12-29 17:58:52.538 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5094/api/documents?pageNumber=2 - null null
+2024-12-29 17:58:52.557 -05:00 [INF] Executing endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocuments (API)'
+2024-12-29 17:58:52.562 -05:00 [INF] Route matched with {action = "GetDocuments", controller = "Documents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDocuments(Int32, Int32, System.String) on controller AI_DocumentWorkflow.Controllers.DocumentsController (API).
+2024-12-29 17:58:52.689 -05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-29 17:58:52.693 -05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-29 17:58:52.707 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Category], [d].[Content], [d].[CreatedAt], [d].[Name], [d].[Status]
+FROM [Documents] AS [d]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_0 ROWS ONLY
+2024-12-29 17:58:52.718 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AI_DocumentWorkflow.Models.Document, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-12-29 17:58:52.725 -05:00 [INF] Executed action AI_DocumentWorkflow.Controllers.DocumentsController.GetDocuments (API) in 157.4049ms
+2024-12-29 17:58:52.729 -05:00 [INF] Executed endpoint 'AI_DocumentWorkflow.Controllers.DocumentsController.GetDocuments (API)'
+2024-12-29 17:58:52.733 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5094/api/documents?pageNumber=2 - 200 null application/json; charset=utf-8 195.5762ms
+2024-12-29 18:04:48.486 -05:00 [INF] Application is shutting down...

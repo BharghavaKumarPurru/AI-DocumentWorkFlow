@@ -1,0 +1,29 @@
+API: GET /api/documents
+Retrieve a paginated list of documents with optional filtering by category.
+
+Request Parameters:
+
+pageNumber (int, default: 1): Page number to retrieve.
+pageSize (int, default: 10): Number of documents per page.
+category (string, optional): Filter documents by category (e.g., HR).
+Example Requests:
+
+GET /api/documents - First 10 documents.
+GET /api/documents?pageNumber=2&pageSize=5 - Second page with 5 documents.
+GET /api/documents?category=HR - All documents in "HR" category.
+GET /api/documents?category=Finance&pageNumber=1&pageSize=3 - First 3 documents in "Finance".
+Response: JSON array of documents with id, name, content, category, status, and createdAt.
+
+ -- Deletes all rows from the Users table
+DELETE FROM [DocumentWorkflowDB].[dbo].[Users];
+
+-- Resets the identity column (optional if you want IDs to start from 1 again)
+DBCC CHECKIDENT ('[DocumentWorkflowDB].[dbo].[Users]', RESEED, 0);
+
+INSERT INTO [DocumentWorkflowDB].[dbo].[Users] (Username, PasswordHash, Role)
+VALUES
+('sales_user', 'XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=', 'Sales'), -- Password: password
+('hr_user', 'XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=', 'HR'),       -- Password: password
+('finance_user', 'XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=', 'Finance'), -- Password: password
+('admin_user', 'XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=', 'Admin');  -- Password: password
+

@@ -1,5 +1,7 @@
 
-# Document Management System
+## Document Management System
+## Demo
+https://github.com/user-attachments/assets/16f3a270-6289-4535-843b-99a91ec52e12
 
 ## Overview
 The **Document Management System** is a full-stack application designed to streamline document workflows using AI-powered categorization and automated processing. This system enables admins to upload documents, which are then analyzed and routed to the appropriate departments (e.g., HR, Finance, IT) for review. Team members can approve or reject documents with feedback, ensuring seamless collaboration and efficient document handling.
